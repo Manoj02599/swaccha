@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swaccha - Report an Issue</title>
+<style>
+  * { box-sizing: border-box; font-family: Arial, sans-serif; }
+  body { margin: 0; background: #f2f2f2; padding: 20px; }
+  .container { max-width: 480px; margin: 0 auto; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .topbar span { font-size: 14px; color: #333; }
+  .logout-btn { background: none; border: none; color: #c62828; font-size: 14px; cursor: pointer; }
+  .card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
+  h2 { text-align: center; color: #2e7d32; margin-top: 0; }
+  h3 { color: #2e7d32; border-bottom: 2px solid #e0e0e0; padding-bottom: 8px; }
+  .preview { width: 100%; height: 220px; background: #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 12px; }
+  .preview img { width: 100%; height: 100%; object-fit: cover; }
+  input[type="file"] { display: none; }
+  .btn { display: block; width: 100%; padding: 12px; border: none; border-radius: 8px; font-size: 16px; margin-bottom: 12px; cursor: pointer; text-align: center; }
+  .btn-primary { background: #2e7d32; color: #fff; }
+  .btn-primary:disabled { background: #a5d6a7; cursor: not-allowed; }
+  select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 12px; font-size: 16px; }
+  .location-text { color: #2e7d32; font-size: 14px; margin-bottom: 10px; }
+  .status { text-align: center; font-size: 14px; margin-top: 10px; color: #1565c0; }
+  .complaint-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #eee; }
+  .complaint-item:last-child { border-bottom: none; }
+  .complaint-item img { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; flex-shrink: 0; }
+  .complaint-info { flex: 1; font-size: 13px; }
+  .complaint-info .cat { font-weight: bold; color: #333; }
+  .badge { display: inline-block; padding: 3px 8px; border-radius: 12px; font-size: 11px; margin-top: 4px; }
+  .badge-pending { background: #fff3cd; color: #856404; }
+  .badge-progress { background: #cce5ff; color: #004085; }
+  .badge-resolved { background: #d4edda; color: #155724; }
+  .empty-text { color: #999; text-align: center; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="topbar">
+    <span id="welcomeText">Loading...</span>
+    <button class="logout-btn" id="logoutBtn">Logout</button>
+  </div>
+
+  <div class="card">
+    <h2>🧹 Report an Issue</h2>
+    <div class="preview" id="preview"><span style="color:#888;">No photo yet</span></div>
+    <label for="photoInput" class="btn btn-primary">📷 Take / Upload Photo</label>
+    <input type="file" id="photoInput" accept="image/*" capture="environment">
+    <div class="location-text" id="locationText"></div>
+    <select id="category">
+      <option value="Garbage">Garbage</option>
+      <option value="Street Light">Street Light</option>
+      <option value="Broken Road">Broken Road</option>
+      <option value="Water Leakage">Water Leakage</option>
+      <option value="Electronic Issue">Electronic Issue</option>
+      <option value="Other">Other</option>
+    </select>
+    <button class="btn btn-primary" id="submitBtn">Submit Complaint</button>
+    <div class="status" id="statusMsg"></div>
+  </div>
+
+  <div class="card">
+    <h3>📋 My Complaints</h3>
+    <div id="complaintList"><p class="empty-text">Loading...</p></div>
+  </div>
+
+</div>
+
+<script>
+  const API_BASE = 'http://127.0.0.1:5000';
+
+  let selectedFile = null;
+  let currentLocation = null;
+
+  const preview = document.getElementById('preview');
+  const locationText = document.getElementById('locationText');
+  const statusMsg = document.getElementById('statusMsg');
+  const submitBtn = document.getElementById('submitBtn');
+  const complaintList = document.getElementById('complaintList');
+  const photoInput = document.getElementById('photoInput');
+
+  // Step 0: Check if logged in as citizen; otherwise redirect to login
+  async function checkAuth() {
+    const res = await fetch(`${API_BASE}/api/me`, { credentials: 'include' });
+    const data = await res.json();
+
+    if (!data.logged_in) {
+      window.location.href = 'login.html';
+      return;
+    }
+    if (data.role !== 'citizen') {
+      window.location.href = 'officer.html';
+      return;
+    }
+    document.getElementById('welcomeText').textContent = `Hi, ${data.name}`;
+    loadMyComplaints();
+  }
+
+  document.getElementById('logoutBtn').addEventListener('click', async () => {
+    await fetch(`${API_BASE}/api/logout`, { method: 'POST', credentials: 'include' });
+    window.location.href = 'login.html';
+  });
+
+  photoInput.addEventListener('change', (e) => {
+    selectedFile = e.target.files[0];
+    if (selectedFile) {
+      const reader = new FileReader();
+      reader.onload = (evt) => { preview.innerHTML = `<img src="${evt.target.result}" />`; };
+      reader.readAsDataURL(selectedFile);
+      getLocation();
+    }
+  });
+
+  function getLocation() {
+    if (!navigator.geolocation) {
+      locationText.textContent = "Geolocation not supported on this device.";
+      return;
+    }
+    locationText.textContent = "Fetching location...";
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        currentLocation = { lat: position.coords.latitude, lng: position.coords.longitude };
+        locationText.textContent = `Location captured: ${currentLocation.lat.toFixed(5)}, ${currentLocation.lng.toFixed(5)}`;
+      },
+      () => { locationText.textContent = "Location permission denied. Please enable GPS."; },
+      { enableHighAccuracy: true }
+    );
+  }
+
+  submitBtn.addEventListener('click', async () => {
+    if (!selectedFile) { statusMsg.textContent = "Please take a photo first."; return; }
+    if (!currentLocation) { statusMsg.textContent = "Waiting for location..."; return; }
+
+    const category = document.getElementById('category').value;
+    const formData = new FormData();
+    formData.append('photo', selectedFile);
+    formData.append('latitude', currentLocation.lat);
+    formData.append('longitude', currentLocation.lng);
+    formData.append('category', category);
+
+    submitBtn.disabled = true;
+    statusMsg.textContent = "Uploading...";
+
+    try {
+      const res = await fetch(`${API_BASE}/api/complaints`, {
+        method: 'POST', credentials: 'include', body: formData
+      });
+      if (!res.ok) throw new Error('Server rejected the request');
+
+      statusMsg.textContent = "✅ Complaint submitted successfully!";
+      preview.innerHTML = `<span style="color:#888;">No photo yet</span>`;
+      locationText.textContent = "";
+      selectedFile = null; currentLocation = null; photoInput.value = "";
+
+      loadMyComplaints();
+    } catch (err) {
+      statusMsg.textContent = "❌ Upload failed: " + err.message;
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+
+  async function loadMyComplaints() {
+    try {
+      const res = await fetch(`${API_BASE}/api/my-complaints`, { credentials: 'include' });
+      const complaints = await res.json();
+
+      if (complaints.length === 0) {
+        complaintList.innerHTML = '<p class="empty-text">You haven\'t submitted any complaints yet.</p>';
+        return;
+      }
+
+      complaintList.innerHTML = complaints.map(c => `
+        <div class="complaint-item">
+          <img src="${API_BASE}${c.photo_url}" />
+          <div class="complaint-info">
+            <div class="cat">${c.category}</div>
+            <span class="badge badge-${statusClass(c.status)}">${c.status}</span>
+          </div>
+        </div>
+      `).join('');
+    } catch (err) {
+      complaintList.innerHTML = '<p class="empty-text">Could not load complaints.</p>';
+    }
+  }
+
+  function statusClass(status) {
+    if (status === 'Pending') return 'pending';
+    if (status === 'In Progress') return 'progress';
+    return 'resolved';
+  }
+
+  checkAuth();
+</script>
+
+</body>
+</html>
