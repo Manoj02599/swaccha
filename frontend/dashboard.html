@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SWACCHA - Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<div class="notification-box">
+
+    <h3>🔔 Notifications</h3>
+
+    <div id="notificationsList">
+        Loading notifications...
+    </div>
+
+</div>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            SWACCHA
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="index.html">Logout</a>
+        </nav>
+
+    </header>
+
+
+    <!-- DASHBOARD -->
+
+    <main class="dashboard">
+
+        <div class="dashboard-heading">
+
+            
+            <h1 id="welcomeMessage">Citizen Dashboard</h1>
+
+            <div class="user-profile">
+
+    <h2>My Profile</h2>
+
+    <p>
+        <strong>Name:</strong>
+        <span id="profileName">Loading...</span>
+    </p>
+
+    <p>
+        <strong>Email:</strong>
+        <span id="profileEmail">Loading...</span>
+    </p>
+
+    <p>
+        <strong>Mobile:</strong>
+        <span id="profileMobile">Loading...</span>
+    </p>
+
+    <p>
+        <strong>City:</strong>
+        <span id="profileCity">Loading...</span>
+    </p>
+
+    <p>
+        <strong>Area / Ward:</strong>
+        <span id="profileArea">Loading...</span>
+    </p>
+
+</div>
+
+            <p>
+                Help make your city cleaner, safer and better.
+            </p>
+
+        </div>
+
+
+        <!-- REPORT ISSUE -->
+
+        <div class="dashboard-grid">
+
+            <div class="dashboard-card">
+
+                <div class="card-icon">
+                    📍
+                </div>
+
+                <h2>Report an Issue</h2>
+
+                <p>
+                    Report garbage, road damage,
+                    street-light problems and other
+                    civic issues.
+                </p>
+
+                <a href="report.html" class="dashboard-button">
+                    Report Issue
+                </a>
+
+            </div>
+
+
+            <!-- MY REPORTS -->
+
+            <div class="dashboard-card">
+
+                <div class="card-icon">
+                    📋
+                </div>
+
+                <h2>My Reports</h2>
+
+                <p>
+                    View the complaints you have submitted
+                    and check their current status.
+                </p>
+
+                <a href="my-reports.html" class="dashboard-button secondary">
+                    View Reports
+                </a>
+
+            </div>
+
+
+            <!-- PUBLIC SERVICES -->
+
+            <div class="dashboard-card">
+
+                <div class="card-icon">
+                    🏛️
+                </div>
+
+                <h2>Public Services</h2>
+
+                <p>
+                    Find useful municipal and public
+                    services available in your area.
+                </p>
+
+                <a href="#" class="dashboard-button secondary">
+                    View Services
+                </a>
+
+            </div>
+
+
+            <!-- EMERGENCY -->
+
+            <div class="dashboard-card">
+
+                <div class="card-icon">
+                    🚨
+                </div>
+
+                <h2>Important Contacts</h2>
+
+                <p>
+                    Quickly find important civic
+                    and emergency contact information.
+                </p>
+
+                <a href="my-reports.html" class="dashboard-button secondary">
+    View Reports
+</a>
+
+            </div>
+
+        </div>
+
+
+        <!-- REPORT STATUS -->
+
+        <section class="status-section">
+
+            <h2>My Recent Reports</h2>
+
+            <div class="empty-reports">
+
+                <div class="card-icon">
+                    📭
+                </div>
+
+                <h3>No reports yet</h3>
+
+                <p>
+                    Your submitted civic issues
+                    will appear here.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h2>SWACCHA</h2>
+
+        <p>
+            Clean City • Better Tomorrow
+        </p>
+
+    </footer>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

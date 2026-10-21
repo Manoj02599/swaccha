@@ -1,0 +1,1254 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f8f6;
+    color: #1d2b22;
+}
+
+
+/* HEADER */
+
+header {
+    height: 75px;
+    background: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 8%;
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+.logo 
+{
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    width: 100px;
+    height: auto;
+    display: block;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #1d2b22;
+    font-weight: 500;
+}
+
+.signup-btn {
+    background: #16864a;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: 550px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 70px 8%;
+
+    background: linear-gradient(
+        120deg,
+        #e9f7ef,
+        #ffffff
+    );
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-size: 60px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    font-size: 19px;
+    line-height: 1.7;
+    color: #5b675f;
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.primary-btn,
+.secondary-btn {
+    padding: 14px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.primary-btn {
+    background: #16864a;
+    color: white;
+}
+
+.secondary-btn {
+    background: white;
+    color: #16864a;
+    border: 2px solid #16864a;
+}
+
+
+/* SERVICES */
+
+.services {
+    padding: 80px 8%;
+    text-align: center;
+}
+
+.services h2,
+.how-it-works h2 {
+    font-size: 35px;
+    margin-bottom: 45px;
+}
+
+.service-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 25px;
+}
+
+.service-card {
+    background: white;
+
+    padding: 30px 20px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.06);
+}
+
+.icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    color: #68736c;
+    line-height: 1.5;
+}
+
+
+/* HOW IT WORKS */
+
+.how-it-works {
+    padding: 80px 8%;
+    text-align: center;
+    background: white;
+}
+
+.steps {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 30px;
+}
+
+.steps span {
+    display: inline-flex;
+
+    width: 50px;
+    height: 50px;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #16864a;
+    color: white;
+
+    font-weight: bold;
+    font-size: 20px;
+
+    margin-bottom: 15px;
+}
+
+.steps h3 {
+    margin-bottom: 10px;
+}
+
+.steps p {
+    color: #68736c;
+    line-height: 1.5;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #17231b;
+    color: white;
+
+    text-align: center;
+
+    padding: 45px 20px;
+}
+
+footer p {
+    margin-top: 10px;
+    color: #b8c2bb;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    header {
+        padding: 0 5%;
+    }
+
+    nav {
+        gap: 10px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .service-container,
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+}
+/* =========================
+   AUTHENTICATION
+========================= */
+
+.auth-section {
+    min-height: 750px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 60px 20px;
+
+    background: #f5f8f6;
+}
+
+
+.auth-card {
+    width: 100%;
+    max-width: 500px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+.auth-card h1 {
+    text-align: center;
+
+    font-size: 32px;
+
+    margin-bottom: 10px;
+}
+
+
+.auth-subtitle {
+    text-align: center;
+
+    color: #68736c;
+
+    margin-bottom: 30px;
+}
+
+
+.auth-card label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: bold;
+}
+
+
+.auth-card input {
+    width: 100%;
+
+    padding: 13px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid #d2d9d4;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+
+.auth-card input:focus {
+    border-color: #16864a;
+}
+
+
+.auth-button {
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #16864a;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.auth-button:hover {
+    background: #116b3b;
+}
+
+
+.login-link {
+    text-align: center;
+
+    margin-top: 25px;
+
+    color: #68736c;
+}
+
+
+.login-link a {
+    color: #16864a;
+
+    font-weight: bold;
+
+    text-decoration: none;
+}
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard {
+    min-height: 750px;
+
+    padding: 60px 8%;
+
+    background: #f5f8f6;
+}
+
+
+.dashboard-heading {
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+
+.dashboard-heading h1 {
+    font-size: 38px;
+
+    margin-bottom: 10px;
+
+    color: #193b2b;
+}
+
+
+.dashboard-heading p {
+    color: #68736c;
+
+    font-size: 17px;
+}
+
+
+/* DASHBOARD CARDS */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+
+    max-width: 1000px;
+
+    margin: auto;
+}
+
+
+.dashboard-card {
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+
+    transition: 0.3s;
+}
+
+
+.dashboard-card:hover {
+    transform: translateY(-4px);
+}
+
+
+.card-icon {
+    font-size: 35px;
+
+    margin-bottom: 12px;
+}
+
+
+.dashboard-card h2 {
+    margin-bottom: 10px;
+
+    color: #193b2b;
+}
+
+
+.dashboard-card p {
+    color: #68736c;
+
+    line-height: 1.6;
+
+    margin-bottom: 22px;
+}
+
+
+/* BUTTON */
+
+.dashboard-button {
+    display: inline-block;
+
+    padding: 12px 20px;
+
+    background: #16864a;
+
+    color: white;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+
+.dashboard-button:hover {
+    background: #116b3b;
+}
+
+
+.dashboard-button.secondary {
+    background: white;
+
+    color: #16864a;
+
+    border: 1px solid #16864a;
+}
+
+
+/* REPORT STATUS */
+
+.status-section {
+    max-width: 1000px;
+
+    margin: 50px auto 0;
+}
+
+
+.status-section > h2 {
+    margin-bottom: 20px;
+
+    color: #193b2b;
+}
+
+
+.empty-reports {
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+
+.empty-reports h3 {
+    margin-bottom: 8px;
+}
+
+
+.empty-reports p {
+    color: #68736c;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard {
+        padding: 40px 5%;
+    }
+
+}
+/* =========================
+   REPORT PAGE
+========================= */
+
+.report-page {
+    min-height: 800px;
+
+    padding: 60px 20px;
+
+    background: #f5f8f6;
+}
+
+
+.report-container {
+    max-width: 700px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+.report-container h1 {
+    text-align: center;
+
+    color: #193b2b;
+
+    margin-bottom: 10px;
+}
+
+
+.report-intro {
+    text-align: center;
+
+    color: #68736c;
+
+    margin-bottom: 35px;
+}
+
+
+.report-container label {
+    display: block;
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+
+    color: #26352d;
+}
+
+
+.report-container input,
+.report-container select,
+.report-container textarea {
+    width: 100%;
+
+    padding: 13px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid #d2d9d4;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    box-sizing: border-box;
+
+    outline: none;
+}
+
+
+.report-container textarea {
+    resize: vertical;
+}
+
+
+.report-container input:focus,
+.report-container select:focus,
+.report-container textarea:focus {
+    border-color: #16864a;
+}
+
+
+/* HELP TEXT */
+
+.field-help {
+    margin-top: -12px;
+
+    margin-bottom: 25px;
+
+    color: #68736c;
+
+    font-size: 13px;
+}
+
+
+/* LOCATION */
+
+.location-button {
+    width: 100%;
+
+    padding: 13px;
+
+    margin-bottom: 12px;
+
+    border: 1px solid #16864a;
+
+    border-radius: 7px;
+
+    background: white;
+
+    color: #16864a;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.location-button:hover {
+    background: #16864a;
+
+    color: white;
+}
+
+
+.location-status {
+    padding: 12px;
+
+    margin-bottom: 20px;
+
+    border-radius: 7px;
+
+    background: #f1f5f2;
+
+    color: #68736c;
+
+    font-size: 14px;
+}
+
+
+/* COORDINATES */
+
+.coordinates {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+}
+
+
+/* PHOTO */
+
+.photo-preview {
+    margin-bottom: 20px;
+
+    text-align: center;
+}
+
+
+.photo-preview img {
+    max-width: 100%;
+
+    max-height: 300px;
+
+    border-radius: 10px;
+}
+
+
+/* SUBMIT */
+
+.submit-report {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #16864a;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.submit-report:hover {
+    background: #116b3b;
+}
+
+
+/* SUCCESS */
+
+.report-success {
+    display: none;
+
+    margin-top: 30px;
+
+    padding: 25px;
+
+    border-radius: 10px;
+
+    background: #e8f6ed;
+
+    text-align: center;
+
+    color: #195c36;
+}
+
+
+.report-success h2 {
+    margin-bottom: 10px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .report-container {
+        padding: 25px;
+    }
+
+    .coordinates {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+}
+/* =========================
+   MY REPORTS
+========================= */
+
+.reports-page {
+    min-height: 750px;
+
+    padding: 60px 20px;
+
+    background: #f5f8f6;
+}
+
+
+.reports-container {
+    max-width: 900px;
+
+    margin: auto;
+}
+
+
+.reports-container h1 {
+    text-align: center;
+
+    color: #193b2b;
+
+    margin-bottom: 10px;
+}
+
+
+.reports-intro {
+    text-align: center;
+
+    color: #68736c;
+
+    margin-bottom: 35px;
+}
+
+
+/* REPORT CARD */
+
+.report-card {
+    background: white;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+}
+
+
+.report-card-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+
+.report-card h2 {
+    color: #193b2b;
+
+    margin: 0;
+}
+
+
+.complaint-id {
+    color: #68736c;
+
+    font-size: 14px;
+}
+
+
+.report-details {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+
+.report-detail {
+    padding: 12px;
+
+    background: #f5f8f6;
+
+    border-radius: 7px;
+}
+
+
+.report-detail strong {
+    display: block;
+
+    margin-bottom: 5px;
+}
+
+
+.report-detail span {
+    color: #68736c;
+}
+
+
+/* STATUS */
+
+.status {
+    display: inline-block;
+
+    padding: 7px 14px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+.status-pending {
+    background: #fff3cd;
+
+    color: #856404;
+}
+
+
+.status-progress {
+    background: #dbeafe;
+
+    color: #1e40af;
+}
+
+
+.status-resolved {
+    background: #d1fae5;
+
+    color: #065f46;
+}
+
+
+/* NO REPORTS */
+
+.no-reports {
+    background: white;
+
+    padding: 50px;
+
+    text-align: center;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+
+.no-reports .card-icon {
+    font-size: 45px;
+}
+
+
+.no-reports h2 {
+    color: #193b2b;
+}
+
+
+.no-reports p {
+    color: #68736c;
+
+    margin-bottom: 25px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .report-details {
+        grid-template-columns: 1fr;
+    }
+
+    .report-card-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+
+}
+/* =========================
+   REPORT MAP
+========================= */
+
+#map {
+    width: 100%;
+    height: 350px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: none;
+}
+/* =========================
+   OFFICER DASHBOARD
+========================= */
+
+.officer-page {
+    min-height: 800px;
+    padding: 60px 20px;
+    background: #f5f8f6;
+}
+
+.officer-container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.officer-container h1 {
+    text-align: center;
+    color: #193b2b;
+    margin-bottom: 10px;
+}
+
+.officer-intro {
+    text-align: center;
+    color: #68736c;
+    margin-bottom: 40px;
+}
+
+
+/* STATISTICS */
+
+.officer-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.officer-stat {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+}
+
+.officer-stat h2 {
+    margin: 0;
+    font-size: 32px;
+    color: #16864a;
+}
+
+.officer-stat p {
+    margin-top: 8px;
+    color: #68736c;
+}
+
+
+/* COMPLAINT SECTION */
+
+.officer-reports {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    margin: 0;
+    color: #193b2b;
+}
+
+.refresh-button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 7px;
+    background: #16864a;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.refresh-button:hover {
+    background: #116b3b;
+}
+
+
+/* OFFICER REPORT CARD */
+
+.officer-report-card {
+    border: 1px solid #dfe5e1;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 18px;
+    background: #fafcfb;
+}
+
+.officer-report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.officer-report-header h3 {
+    margin: 0 0 5px;
+    color: #193b2b;
+}
+
+.officer-report-id {
+    color: #68736c;
+    font-size: 13px;
+}
+
+.officer-report-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.officer-info-box {
+    padding: 12px;
+    background: #f1f5f2;
+    border-radius: 7px;
+}
+
+.officer-info-box strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.officer-info-box span {
+    color: #68736c;
+}
+
+
+/* STATUS BUTTONS */
+
+.status-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.status-button {
+    padding: 9px 15px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.status-pending-button {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-progress-button {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.status-resolved-button {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-button:hover {
+    opacity: 0.8;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .officer-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .officer-report-info {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .officer-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .officer-reports {
+        padding: 20px;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+}
+/* =========================
+   DEPARTMENT SELECT
+========================= */
+
+.officer-info-box select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border: 1px solid #d2d9d4;
+    border-radius: 7px;
+    background: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.officer-info-box select:focus {
+    outline: none;
+    border-color: #16864a;
+}
+
+.user-profile {
+    max-width: 600px;
+    margin: 25px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.user-profile h2 {
+    margin-bottom: 20px;
+}
+
+.user-profile p {
+    margin: 10px 0;
+}

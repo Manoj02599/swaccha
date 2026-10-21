@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SWACCHA - Report Issue</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            SWACCHA
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+        </nav>
+
+    </header>
+
+
+    <!-- REPORT SECTION -->
+
+    <main class="report-page">
+
+        <div class="report-container">
+
+            <h1>Report a Civic Issue</h1>
+
+            <p class="report-intro">
+                Help us keep your city clean, safe and better.
+            </p>
+
+
+            <form id="reportForm">
+
+
+                <!-- ISSUE CATEGORY -->
+
+                <label for="issueCategory">
+                    Issue Category
+                </label>
+
+                <select id="issueCategory" required>
+
+                    <option value="">
+                        Select an issue
+                    </option>
+
+                    <option value="garbage">
+                        Garbage / Waste
+                    </option>
+
+                    <option value="road">
+                        Road Damage / Pothole
+                    </option>
+
+                    <option value="streetlight">
+                        Street Light
+                    </option>
+
+                    <option value="drainage">
+                        Drainage / Sewage
+                    </option>
+
+                    <option value="water">
+                        Water Supply
+                    </option>
+
+                    <option value="electricity">
+                        Electricity Issue
+                    </option>
+
+                    <option value="other">
+                        Other Civic Issue
+                    </option>
+
+                </select>
+
+
+                <!-- PHOTO -->
+
+                <label for="issuePhoto">
+                    Upload Photo
+                </label>
+
+                <input
+                    type="file"
+                    id="issuePhoto"
+                    accept="image/*"
+                    capture="environment"
+                    required
+                >
+
+                <p class="field-help">
+                    Take a clear photo of the issue.
+                </p>
+
+
+                <!-- PHOTO PREVIEW -->
+
+                <div id="photoPreview" class="photo-preview">
+                </div>
+
+
+                <!-- LOCATION -->
+
+                <label>
+                    Location
+                </label>
+
+                <button
+                    type="button"
+                    id="locationButton"
+                    class="location-button">
+                    📍 Get My Location
+                </button>
+
+                <div id="locationStatus" class="location-status">
+                    Location not detected yet.
+                </div>
+                <div id="map"></div>
+
+
+                <!-- COORDINATES -->
+
+                <div class="coordinates">
+
+                    <div>
+
+                        <label for="latitude">
+                            Latitude
+                        </label>
+
+                        <input
+                            type="text"
+                            id="latitude"
+                            readonly
+                            placeholder="Not available"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="longitude">
+                            Longitude
+                        </label>
+
+                        <input
+                            type="text"
+                            id="longitude"
+                            readonly
+                            placeholder="Not available"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- ADDRESS -->
+
+                <label for="address">
+    Address / Landmark
+</label>
+
+<input
+    type="text"
+    id="address"
+    placeholder="Address will be detected automatically"
+    required
+>
+
+<p class="field-help" id="addressStatus">
+    Address will be detected after getting your location.
+</p>
+                >
+
+
+                <!-- DESCRIPTION -->
+
+                <label for="description">
+                    Describe the Issue
+                </label>
+
+                <textarea
+                    id="description"
+                    rows="5"
+                    placeholder="Explain the problem..."
+                    required
+                ></textarea>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="submit-report">
+                    Submit Report
+                </button>
+
+            </form>
+
+
+            <!-- SUCCESS MESSAGE -->
+
+            <div
+                id="reportSuccess"
+                class="report-success">
+
+                <h2>✅ Report Submitted</h2>
+
+                <p>
+                    Your civic issue has been recorded.
+                </p>
+
+                <p>
+                    Complaint ID:
+                    <strong id="complaintId"></strong>
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h2>SWACCHA</h2>
+
+        <p>
+            Clean City • Better Tomorrow
+        </p>
+
+    </footer>
+
+
+    <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+<script src="js/script.js"></script>
+
+</body>
+
+</html>

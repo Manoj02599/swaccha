@@ -1,1 +1,0 @@
-# swaccha-app
