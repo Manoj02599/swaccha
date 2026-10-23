@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 
 const app = express();
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
@@ -558,10 +558,8 @@ app.get("/api/test-notification", function (req, res) {
 // START SERVER
 // =========================
 
+
+
 app.listen(PORT, function () {
-
-    console.log(
-        `SWACCHA server running at http://localhost:${PORT}`
-    );
-
+    console.log("SWACCHA Backend running on port " + PORT);
 });
