@@ -280,7 +280,7 @@ const report = {
             JSON.stringify(reports)
         );
 
-        fetch("http://localhost:3000/api/reports", {
+       fetch("https://swaccha.onrender.com/api/reports",  {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
@@ -357,7 +357,7 @@ function loadMyReports() {
         JSON.parse(savedUser);
 
 
-    fetch("http://localhost:3000/api/reports")
+    fetch("https://swaccha.onrender.com/api/reports")
 
         .then(function (response) {
 
@@ -714,7 +714,7 @@ function loadOfficerReports() {
         return;
     }
 
-    fetch("http://localhost:3000/api/reports")
+    fetch("https://swaccha.onrender.com/api/reports")
         .then(function (response) {
             return response.json();
         })
@@ -1038,7 +1038,7 @@ function loadOfficerReports() {
 
 function updateReportStatus(index, newStatus) {
 
-    fetch("http://localhost:3000/api/reports")
+    fetch("https://swaccha.onrender.com/api/reports")
         .then(function(response) {
             return response.json();
         })
@@ -1056,7 +1056,7 @@ function updateReportStatus(index, newStatus) {
             );
 
             return fetch(
-                "http://localhost:3000/api/reports/" +
+                "https://swaccha.onrender.com/api/reports/" +
                 report.id +
                 "/status",
                 {
@@ -1093,7 +1093,7 @@ function updateReportStatus(index, newStatus) {
 
 function updateReportStatus(index, newStatus) {
 
-    fetch("http://localhost:3000/api/reports")
+    fetch("https://swaccha.onrender.com/api/reports")
         .then(function (response) {
             return response.json();
         })
@@ -1120,7 +1120,7 @@ function updateReportStatus(index, newStatus) {
             }
 
             return fetch(
-                "http://localhost:3000/api/reports/" +
+                "https://swaccha.onrender.com/api/reports/" +
                 report.id +
                 "/status",
                 {
@@ -1175,7 +1175,7 @@ function updateReportStatus(index, newStatus) {
 
 function updateReportStatus(index, newStatus) {
 
-    fetch("http://localhost:3000/api/reports")
+    fetch("https://swaccha.onrender.com/api/reports")
         .then(function (response) {
             return response.json();
         })
@@ -1202,7 +1202,7 @@ function updateReportStatus(index, newStatus) {
             }
 
             return fetch(
-                "http://localhost:3000/api/reports/" +
+                "https://swaccha.onrender.com/api/reports/" +
                 report.id +
                 "/status",
                 {
@@ -1257,7 +1257,7 @@ function updateReportStatus(index, newStatus) {
 
 function updateReportDepartment(index, department) {
 
-    fetch("http://localhost:3000/api/reports")
+    fetch("https://swaccha.onrender.com/api/reports")
         .then(function (response) {
             return response.json();
         })
@@ -1271,7 +1271,7 @@ function updateReportDepartment(index, department) {
             }
 
            return fetch(
-    "http://localhost:3000/api/reports/" +
+    "https://swaccha.onrender.com/api/reports/" +
     report.id +
     "/department",
     {
@@ -1369,7 +1369,7 @@ function getDepartment(category) {
 
 }
 // TEST BACKEND CONNECTION
-fetch("http://localhost:3000/")
+fetch("https://swaccha.onrender.com/")
     .then(function (response) {
         return response.text();
     })
@@ -1419,7 +1419,7 @@ if (signupForm) {
         }
 
 
-        fetch("http://localhost:3000/api/signup", {
+        fetch("https://swaccha.onrender.com/api/signup", {
 
             method: "POST",
 
@@ -1500,7 +1500,7 @@ if (loginForm) {
             document.getElementById("loginPassword").value;
 
 
-        fetch("http://localhost:3000/api/login", {
+        fetch("https://swaccha.onrender.com/api/login", {
 
             method: "POST",
 
@@ -1693,7 +1693,7 @@ function loadNotifications() {
     }
 
     fetch(
-        "http://localhost:3000/api/notifications/" +
+        "https://swaccha.onrender.com/api/notifications/" +
         encodeURIComponent(user.email)
     )
     .then(function(response) {
@@ -1753,7 +1753,7 @@ function viewReportDetails(reportId) {
     }
 
     fetch(
-        "http://localhost:3000/api/reports"
+        "https://swaccha.onrender.com/api/reports"
     )
     .then(function(response) {
         return response.json();
