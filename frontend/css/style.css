@@ -6,7 +6,11 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f5f8f6;
+    background-image: url("../images/swaccha-background.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: #1d2b22;
 }
 
@@ -66,11 +70,8 @@ nav a {
 
     padding: 70px 8%;
 
-    background: linear-gradient(
-        120deg,
-        #e9f7ef,
-        #ffffff
-    );
+    background: transparent;
+    
 }
 
 .hero-content {
@@ -384,7 +385,7 @@ footer p {
 
     padding: 60px 8%;
 
-    background: #f5f8f6;
+    background: transparent;
 }
 
 
@@ -517,7 +518,7 @@ footer p {
 
 
 .empty-reports {
-    background: white;
+    background: transparent;
 
     padding: 40px;
 
@@ -570,7 +571,7 @@ footer p {
 
     margin: auto;
 
-    background: white;
+    background: rgba(255, 255, 255, 0.88);
 
     padding: 40px;
 
@@ -803,10 +804,8 @@ footer p {
 
 .reports-page {
     min-height: 750px;
-
     padding: 60px 20px;
-
-    background: #f5f8f6;
+    background: transparent;
 }
 
 
@@ -838,7 +837,7 @@ footer p {
 /* REPORT CARD */
 
 .report-card {
-    background: white;
+     background: rgba(255, 255, 255, 0.90);
 
     padding: 25px;
 
@@ -1011,7 +1010,7 @@ footer p {
 .officer-page {
     min-height: 800px;
     padding: 60px 20px;
-    background: #f5f8f6;
+    background: transparent;
 }
 
 .officer-container {
@@ -1042,7 +1041,7 @@ footer p {
 }
 
 .officer-stat {
-    background: white;
+     background: rgba(255, 255, 255, 0.90);
     padding: 25px;
     text-align: center;
     border-radius: 12px;
@@ -1064,7 +1063,7 @@ footer p {
 /* COMPLAINT SECTION */
 
 .officer-reports {
-    background: white;
+    background: rgba(255, 255, 255, 0.90);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
@@ -1251,4 +1250,30 @@ footer p {
 
 .user-profile p {
     margin: 10px 0;
+}
+
+/* =========================
+   SWACCHA GLOBAL BACKGROUND
+   ========================= */
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    background-image: url("../images/swaccha-background.png") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+}
+
+/* Keep main sections transparent */
+.hero,
+.dashboard-container,
+.report-container,
+.page-container,
+.main-content {
+    background: transparent;
 }
